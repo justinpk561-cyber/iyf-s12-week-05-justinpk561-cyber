@@ -46,3 +46,27 @@ console.log(taskList.previousElementSibling);
 
 // Find a paragraph inside the article
 console.log(document.querySelector("article p"));
+
+
+// Task 9.3: Modifying DOM Elements
+
+// Change text content
+title.textContent = "My DOM Manipulation Practice";
+
+// Change HTML content
+const article = document.querySelector("article");
+article.innerHTML = "<h2>Learning DOM</h2><p>JavaScript makes websites interactive!</p>";
+
+// Change an attribute
+firstLink.setAttribute("title", "Go to Home");
+
+// Read an attribute
+console.log(firstLink.getAttribute("href"));
+
+// Change a data attribute
+taskList.dataset.status = "active";
+console.log(taskList.dataset.status);
+
+// Change styles
+title.style.color = "blue";
+title.style.fontSize = "30px";
