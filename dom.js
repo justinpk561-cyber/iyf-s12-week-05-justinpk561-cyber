@@ -70,3 +70,33 @@ console.log(taskList.dataset.status);
 // Change styles
 title.style.color = "blue";
 title.style.fontSize = "30px";
+
+
+// Task 9.4: Creating and Removing Elements
+
+// Create a new paragraph
+const newParagraph = document.createElement("p");
+newParagraph.textContent = "I created this paragraph using JavaScript!";
+
+// Add it to the page
+document.querySelector("main").appendChild(newParagraph);
+
+// Create a new navigation link
+function addNavItem(text, href) {
+    const link = document.createElement("a");
+    link.textContent = text;
+    link.href = href;
+
+    document.querySelector("nav").appendChild(link);
+}
+
+// Add a new navigation item
+addNavItem("Contact", "#contact");
+
+// Remove the last task
+const lastTask = taskList.lastElementChild;
+lastTask.remove();
+
+// Clone the title
+const titleCopy = title.cloneNode(true);
+document.querySelector("main").appendChild(titleCopy);
