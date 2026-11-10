@@ -184,3 +184,55 @@ sampleForm.addEventListener("submit", function(event) {
     event.preventDefault();
     alert("Form submitted successfully!");
 });
+
+
+// Task 10.3: Event Delegation
+
+// Add delete buttons to existing tasks
+taskList.querySelectorAll("li").forEach(function(item) {
+    const deleteButton = document.createElement("button");
+    deleteButton.textContent = "Delete";
+    item.appendChild(deleteButton);
+});
+
+// One event listener handles all task clicks
+taskList.addEventListener("click", function(event) {
+    const clickedItem = event.target.closest("li");
+
+    if (!clickedItem) return;
+
+    // Delete task
+    if (event.target.tagName === "BUTTON") {
+        clickedItem.remove();
+        return;
+    }
+
+    // Toggle completed status
+    clickedItem.classList.toggle("completed");
+
+    if (clickedItem.classList.contains("completed")) {
+        clickedItem.style.textDecoration = "line-through";
+    } else {
+        clickedItem.style.textDecoration = "none";
+    }
+});
+
+// Add new tasks
+const addTaskButton = document.createElement("button");
+addTaskButton.textContent = "Add New Task";
+document.body.appendChild(addTaskButton);
+
+addTaskButton.addEventListener("click", function() {
+    const taskName = prompt("Enter a new task:");
+
+    if (taskName && taskName.trim() !== "") {
+        const newTask = document.createElement("li");
+        newTask.textContent = taskName;
+
+        const deleteButton = document.createElement("button");
+        deleteButton.textContent = "Delete";
+
+        newTask.appendChild(deleteButton);
+        taskList.appendChild(newTask);
+    }
+});
