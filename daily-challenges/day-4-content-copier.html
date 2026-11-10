@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content Copier</title>
+</head>
+<body>
+
+    <h1>Content Copier</h1>
+
+    <h2>Source Content</h2>
+    <div id="source">
+        <p>Hello! I am learning JavaScript DOM manipulation.</p>
+        <p>This content will be copied below.</p>
+    </div>
+
+    <button id="copy-button">Copy Content</button>
+
+    <h2>Target Content</h2>
+    <div id="target">
+        <p>Copied content will appear here.</p>
+    </div>
+
+    <script>
+        const source = document.getElementById("source");
+        const target = document.getElementById("target");
+        const copyButton = document.getElementById("copy-button");
+
+        copyButton.addEventListener("click", function() {
+            target.textContent = source.textContent;
+        });
+    </script>
+
+</body>
+</html>
