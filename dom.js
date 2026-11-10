@@ -148,3 +148,39 @@ resetButton.addEventListener("click", function() {
     count = 0;
     countDisplay.textContent = "Count: " + count;
 });
+
+
+// Task 10.2: Keyboard Shortcuts
+
+const sampleForm = document.getElementById("sample-form");
+
+// Listen for keyboard events
+document.addEventListener("keydown", function(event) {
+
+    // Ctrl + S: Save
+    if (event.ctrlKey && event.key.toLowerCase() === "s") {
+        event.preventDefault();
+        alert("Saved!");
+    }
+
+    // Escape: Clear form inputs
+    if (event.key === "Escape") {
+        sampleForm.reset();
+    }
+
+    // Ctrl + Enter: Submit form
+    if (event.ctrlKey && event.key === "Enter") {
+        event.preventDefault();
+        sampleForm.requestSubmit();
+    }
+
+    // Display keyboard event information
+    console.log("Key pressed:", event.key);
+    console.log("Event type:", event.type);
+});
+
+// Prevent the form from refreshing the page
+sampleForm.addEventListener("submit", function(event) {
+    event.preventDefault();
+    alert("Form submitted successfully!");
+});
