@@ -100,3 +100,51 @@ lastTask.remove();
 // Clone the title
 const titleCopy = title.cloneNode(true);
 document.querySelector("main").appendChild(titleCopy);
+
+
+// Task 10.1: Click Counter
+
+let count = 0;
+
+const counterContainer = document.createElement("div");
+
+const countDisplay = document.createElement("h2");
+countDisplay.textContent = "Count: 0";
+
+const increaseButton = document.createElement("button");
+increaseButton.textContent = "Increase";
+
+const decreaseButton = document.createElement("button");
+decreaseButton.textContent = "Decrease";
+
+const resetButton = document.createElement("button");
+resetButton.textContent = "Reset";
+
+counterContainer.append(
+    countDisplay,
+    increaseButton,
+    decreaseButton,
+    resetButton
+);
+
+document.body.appendChild(counterContainer);
+
+// Increase count
+increaseButton.addEventListener("click", function() {
+    count++;
+    countDisplay.textContent = "Count: " + count;
+});
+
+// Decrease count
+decreaseButton.addEventListener("click", function() {
+    if (count > 0) {
+        count--;
+    }
+    countDisplay.textContent = "Count: " + count;
+});
+
+// Reset count
+resetButton.addEventListener("click", function() {
+    count = 0;
+    countDisplay.textContent = "Count: " + count;
+});
