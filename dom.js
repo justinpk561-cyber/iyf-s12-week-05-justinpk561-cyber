@@ -179,12 +179,6 @@ document.addEventListener("keydown", function(event) {
     console.log("Event type:", event.type);
 });
 
-// Prevent the form from refreshing the page
-sampleForm.addEventListener("submit", function(event) {
-    event.preventDefault();
-    alert("Form submitted successfully!");
-});
-
 
 // Task 10.3: Event Delegation
 
@@ -236,3 +230,61 @@ addTaskButton.addEventListener("click", function() {
         taskList.appendChild(newTask);
     }
 });
+
+
+// Task 10.4: Form Validation
+
+const emailInput = document.createElement("input");
+emailInput.type = "email";
+emailInput.id = "email";
+emailInput.placeholder = "Enter your email";
+
+sampleForm.insertBefore(emailInput, sampleForm.querySelector("button"));
+
+const message = document.createElement("p");
+sampleForm.appendChild(message);
+
+function showError(input, errorMessage) {
+    input.style.border = "2px solid red";
+    message.textContent = errorMessage;
+    message.style.color = "red";
+}
+
+function clearError(input) {
+    input.style.border = "";
+    message.textContent = "";
+}
+
+function showSuccess() {
+    message.textContent = "Form submitted successfully!";
+    message.style.color = "green";
+}
+
+sampleForm.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const name = document.getElementById("username");
+    const email = document.getElementById("email");
+
+    clearError(name);
+    clearError(email);
+
+    if (name.value.trim().length < 2) {
+        showError(name, "Name must be at least 2 characters.");
+        return;
+    }
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailPattern.test(email.value.trim())) {
+        showError(email, "Please enter a valid email.");
+        return;
+    }
+
+    const formData = new FormData(sampleForm);
+    console.log(Object.fromEntries(formData));
+
+    showSuccess();
+    sampleForm.reset();
+});
+
