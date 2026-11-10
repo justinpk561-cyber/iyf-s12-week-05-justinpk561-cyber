@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Remover</title>
+</head>
+<body>
+
+    <h1>Image Remover</h1>
+
+    <img src="https://placehold.co/200x120?text=Image+1" alt="Sample image one">
+    <img src="https://placehold.co/200x120?text=Image+2" alt="Sample image two">
+    <img src="https://placehold.co/200x120?text=Image+3" alt="Sample image three">
+
+    <br><br>
+
+    <button id="hide-images">Hide Images</button>
+    <button id="show-images">Show Images</button>
+    <button id="remove-images">Remove All Images</button>
+
+    <script>
+        const images = document.querySelectorAll("img");
+
+        document.getElementById("hide-images").addEventListener("click", function() {
+            images.forEach(function(image) {
+                image.style.display = "none";
+            });
+        });
+
+        document.getElementById("show-images").addEventListener("click", function() {
+            images.forEach(function(image) {
+                image.style.display = "inline";
+            });
+        });
+
+        document.getElementById("remove-images").addEventListener("click", function() {
+            document.querySelectorAll("img").forEach(function(image) {
+                image.remove();
+            });
+        });
+    </script>
+
+</body>
+</html>
